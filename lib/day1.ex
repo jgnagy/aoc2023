@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Aoc2023.Day1 do
   @moduledoc """
-  Documentation for Advent of Code 2022 Day1.
+  Documentation for Advent of Code 2023 Day1.
   """
   use Mix.Task
 
