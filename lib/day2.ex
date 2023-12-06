@@ -36,7 +36,7 @@ defmodule Mix.Tasks.Aoc2023.Day2 do
   end
 
   @doc """
-  Solve Day2 part 1 stuff.
+  Solve Day2 part 2 stuff.
 
   ## Examples
 
