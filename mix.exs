@@ -21,6 +21,7 @@ defmodule Aoc2023.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:combination, "~> 0.0.3"},
       {:libgraph, "~> 0.16"},
       {:math, "~> 0.6.0"}
     ]
