@@ -58,7 +58,7 @@ defmodule Mix.Tasks.Aoc2023.Day11 do
 
     x_worth = raw_input_lines
     |> Enum.map(fn line -> String.split(line, "", trim: true) end)
-    |> transpose()
+    |> Aoc.Toolbox.transpose()
     |> Enum.map(&Enum.join(&1, ""))
     |> Enum.map(fn (line) -> if row_contains_galaxy?(line), do: 1, else: multiple end)
 
@@ -82,11 +82,11 @@ defmodule Mix.Tasks.Aoc2023.Day11 do
     list
     |> duplicate_lines_if_necessary(multiple)
     |> Enum.map(fn line -> String.split(line, "", trim: true) end)
-    |> transpose()
+    |> Aoc.Toolbox.transpose()
     |> Enum.map(&Enum.join(&1, ""))
     |> duplicate_lines_if_necessary(multiple)
     |> Enum.map(fn line -> String.split(line, "", trim: true) end)
-    |> transpose()
+    |> Aoc.Toolbox.transpose()
     |> Enum.map(&Enum.join(&1, ""))
   end
 
@@ -113,18 +113,6 @@ defmodule Mix.Tasks.Aoc2023.Day11 do
         end
       )
     |> List.flatten()
-  end
-
-  @doc """
-  Transpose a list of lists.
-
-  ## Examples
-
-      iex> Mix.Tasks.Aoc2023.Day11.transpose([["a", "b"], ["c", "d"]])
-      [["a", "c"], ["b", "d"]]
-  """
-  def transpose(list) do
-    Enum.zip_with(list, &Function.identity/1)
   end
 
   def build_point(graph, index, line) do

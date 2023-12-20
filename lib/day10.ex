@@ -71,7 +71,7 @@ defmodule Mix.Tasks.Aoc2023.Day10 do
 
     loop = calculate_loop(graph, start, [])
 
-    shoelace_formula(loop)
+    Aoc.Toolbox.shoelace_formula(loop)
     |> find_interior_via_picks_theorem(Enum.count(loop))
     |> round()
   end
@@ -145,35 +145,6 @@ defmodule Mix.Tasks.Aoc2023.Day10 do
     else
       calculate_loop(graph, next_point, loop_points ++ [next_point])
     end
-  end
-
-  @doc """
-  Determine's the area of a polygon given the coordinates of its vertices
-
-  ## Reference
-
-    https://en.wikipedia.org/wiki/Shoelace_formula
-
-  ## Examples
-
-    iex> Mix.Tasks.Aoc2023.Day10.shoelace_formula([{0, 0}, {1, 0}, {1, 1}, {0, 1}])
-    1.0
-
-    iex> Mix.Tasks.Aoc2023.Day10.shoelace_formula([{7, 2}, {4, 4}, {8, 6}, {7, 2}])
-    7.0
-
-    iex> Mix.Tasks.Aoc2023.Day10.shoelace_formula([{3, 1}, {4, 3}, {7, 2}, {4, 4}, {8, 6}, {1, 7}, {3, 1}])
-    17.0
-  """
-  def shoelace_formula(path) do
-    # convert the path to a list of rows and columns (x values and y values)
-    [[x1 | xn] = rows, [y1 | yn] = columns] = path
-    |> Enum.reduce([[], []], fn {r, c}, [rows, columns] -> [[r | rows], [c | columns]] end)
-
-    color1 = Enum.zip(rows, yn ++ [y1]) |> Enum.reduce(0, fn {r, c}, sum -> sum + r * c end)
-
-    color2 = Enum.zip(columns, xn ++ [x1]) |> Enum.reduce(0, fn {c, r}, sum -> sum + c * r end)
-    (abs(color1 - color2) / 2)
   end
 
   @doc """

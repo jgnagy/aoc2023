@@ -23,7 +23,8 @@ defmodule Aoc2023.MixProject do
     [
       {:combination, "~> 0.0.3"},
       {:libgraph, "~> 0.16"},
-      {:math, "~> 0.6.0"}
+      {:math, "~> 0.6.0"},
+      {:pathex, "~> 2.0"}
     ]
   end
 end

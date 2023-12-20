@@ -1,5 +1,8 @@
 defmodule Aoc2023Test do
   use ExUnit.Case
+
+  doctest Aoc.Toolbox
+  doctest Aoc.Toolbox.SimpleCache
   doctest Mix.Tasks.Aoc2023.Day1
   doctest Mix.Tasks.Aoc2023.Day2
   doctest Mix.Tasks.Aoc2023.Day3
@@ -11,4 +14,5 @@ defmodule Aoc2023Test do
   doctest Mix.Tasks.Aoc2023.Day9
   doctest Mix.Tasks.Aoc2023.Day10
   doctest Mix.Tasks.Aoc2023.Day11
+  doctest Mix.Tasks.Aoc2023.Day12
 end
