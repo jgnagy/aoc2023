@@ -39,6 +39,12 @@ defmodule Aoc.Toolbox do
       iex> Aoc.Toolbox.transpose([["a", "b"], ["c", "d"]])
       [["a", "c"], ["b", "d"]]
 
+      iex> Aoc.Toolbox.transpose([["a", "b", "c"], ["d", "e", "f"]])
+      [["a", "d"], ["b", "e"], ["c", "f"]]
+
+      iex> Aoc.Toolbox.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+      [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+
   """
   def transpose(list) do
     Enum.zip_with(list, &Function.identity/1)
