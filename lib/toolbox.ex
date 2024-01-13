@@ -37,17 +37,44 @@ defmodule Aoc.Toolbox do
   ## Examples
 
       iex> Aoc.Toolbox.transpose([["a", "b"], ["c", "d"]])
+      ...> |> Enum.sort()
       [["a", "c"], ["b", "d"]]
 
       iex> Aoc.Toolbox.transpose([["a", "b", "c"], ["d", "e", "f"]])
+      ...> |> Enum.sort()
       [["a", "d"], ["b", "e"], ["c", "f"]]
 
       iex> Aoc.Toolbox.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+      ...> |> Enum.sort()
       [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
 
   """
   def transpose(list) do
-    Enum.zip_with(list, &Function.identity/1)
+    Stream.zip_with(list, &Function.identity/1)
+  end
+
+  @doc """
+  Swap elements at specific indexes in a list.
+
+  ## Examples
+
+      iex> Aoc.Toolbox.swap_elements(["a", "b", "c"], 0, 2)
+      ["c", "b", "a"]
+
+      iex> Aoc.Toolbox.swap_elements([:a, :b, :c, :d], 0, 2)
+      [:c, :b, :a, :d]
+
+      iex> Aoc.Toolbox.swap_elements([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1, 2)
+      [[1, 2, 3], [7, 8, 9], [4, 5, 6]]
+
+  """
+  def swap_elements(list, index1, index2) do
+    value1 = Enum.at(list, index1)
+    value2 = Enum.at(list, index2)
+
+    list
+    |> List.replace_at(index1, value2)
+    |> List.replace_at(index2, value1)
   end
 end
 
